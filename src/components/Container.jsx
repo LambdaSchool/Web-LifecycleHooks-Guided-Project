@@ -11,8 +11,8 @@ const initialFormState = {
 const fetchFriendsFrom = (url) => (
   Promise.resolve([
     { id: uuid(), name: 'Delba', age: '22', friendly: true },
-    // { id: uuid(), name: 'Maxime', age: '20', friendly: true },
-    // { id: uuid(), name: 'Giacomo', age: '2', friendly: true },
+    { id: uuid(), name: 'Maxime', age: '20', friendly: true },
+    { id: uuid(), name: 'Giacomo', age: '2', friendly: true },
   ])
 );
 
