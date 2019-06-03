@@ -3,17 +3,14 @@ import pt from 'prop-types';
 
 export default function Friend({ bold, friend, deleteFriend, markAsEnemy, setFriendToBeEdited }) {
   const onEdit = event => {
-    // One liner. Implement using setFriendToBeEdited
     setFriendToBeEdited(friend.id);
   };
 
   const onDelete = event => {
-    // One liner. Implement using deleteFriend
     deleteFriend(friend.id);
   };
 
   const onMarkEnemy = event => {
-    // One liner. Implement using markAsEnemy
     markAsEnemy(friend.id);
   };
 
@@ -61,7 +58,3 @@ Friend.propTypes = {
 Friend.defaultProps = {
   bold: false,
 };
-
-// USE PROP TYPES ALL OVER!!! all components, all props
-// ALWAYS MAKE REQUIRED, if they are crucial
-// YOu can make non-required, for non-crucial stuff (bold), PROVIDE DEFAULT

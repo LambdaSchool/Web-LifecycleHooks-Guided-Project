@@ -9,23 +9,19 @@ export default function FriendEditor({
   inputChange,
 }) {
   const onNameChange = event => {
-    // One liner. You'll need inputChange
     inputChange(event.target.value, 'nameValue');
   };
 
   const onAgeChange = event => {
-    // One liner. You'll need inputChange
     inputChange(event.target.value, 'ageValue');
   };
 
   const onFriendAdd = event => {
-    // One liner. You'll need addFriend
     addFriend();
   };
 
   const onFriendUpdate = event => {
     updateFriend();
-    // One liner. You'll need updateFriend
   };
 
   return (
