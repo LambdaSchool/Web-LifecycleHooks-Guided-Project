@@ -1,33 +1,36 @@
 import React from 'react';
 import pt from 'prop-types';
 
-export default function Friend({ bold, friend, deleteFriend, markAsEnemy, setFriendToBeEdited }) {
-  const onEdit = event => {
-    setFriendToBeEdited(friend.id);
+
+export default class Friend extends React.Component {
+  onEdit = () => {
+    this.props.setFriendToBeEdited(this.props.friend.id);
   };
 
-  const onDelete = event => {
-    deleteFriend(friend.id);
+  onDelete = () => {
+    this.props.deleteFriend(this.props.friend.id);
   };
 
-  const onMarkEnemy = event => {
-    markAsEnemy(friend.id);
+  onMarkEnemy = () => {
+    this.props.markAsEnemy(this.props.friend.id);
   };
 
-  const friendStyle = {
-    color: friend.friendly ? 'green' : 'red',
-    fontWeight: bold ? 'bold' : 'initial',
-  };
+  render() {
+    const friendStyle = {
+      color: this.props.friend.friendly ? 'green' : 'red',
+      fontWeight: this.props.bold ? 'bold' : 'initial',
+    };
 
-  return (
-    <div>
-      <span style={friendStyle}>{friend.name} is {friend.age}</span>
+    return (
+      <div>
+        <span style={friendStyle}>{this.props.friend.name} is {this.props.friend.age}</span>
 
-      <button onClick={onEdit} className='small'>Edit</button>
-      <button onClick={onDelete} className='small danger'>Delete</button>
-      <button onClick={onMarkEnemy} className='small alert'>Mark as Enemy</button>
-    </div>
-  );
+        <button onClick={this.onEdit} className='small'>Edit</button>
+        <button onClick={this.onDelete} className='small danger'>Delete</button>
+        <button onClick={this.onMarkEnemy} className='small alert'>Mark as Enemy</button>
+      </div>
+    );
+  }
 }
 
 const customAgeValidator = (props, propName, componentName) => {
