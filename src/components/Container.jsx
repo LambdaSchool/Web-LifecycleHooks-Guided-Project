@@ -8,12 +8,16 @@ const initialFormState = {
   ageValue: '',
 };
 
-const initialState = {
-  friends: [
+const fakeFriendsEndpoint = () => (
+  Promise.resolve([
     { id: uuid(), name: 'Delba', age: '22', friendly: true },
     { id: uuid(), name: 'Maxime', age: '20', friendly: true },
     { id: uuid(), name: 'Giacomo', age: '2', friendly: true },
-  ],
+  ])
+);
+
+const initialState = {
+  friends: [],
   currentFriendId: null,
   form: initialFormState,
 };
@@ -25,9 +29,6 @@ export default class Container extends React.Component {
   }
 
   addFriend = () => {
-    // using setState:
-    // 1- add a new friend object to state.friends
-    // 2- reset the form to its initial state
     this.setState(state => {
       if (state.form.nameValue.trim() && state.form.ageValue.trim()) {
         const newFriend = {
@@ -45,10 +46,6 @@ export default class Container extends React.Component {
   }
 
   updateFriend = () => {
-    // using setState:
-    // 1- update an existing friend (the `state.currentFriendId` tells us which)
-    // 2- reset currentFriendId to null
-    // 3- reset the form to its initial state
     this.setState(state => ({
       friends: state.friends.map(friend => {
         if (friend.id === state.currentFriendId) {
@@ -63,10 +60,6 @@ export default class Container extends React.Component {
   }
 
   deleteFriend = id => {
-    // using setState:
-    // 1- delete an existing friend (the `id` tells us which)
-    // 2- also set currentFriendId to null
-    // 3- reset the form to its initial state
     this.setState(st => ({
       friends: st.friends.filter(fr => fr.id !== id),
       form: initialFormState,
@@ -75,10 +68,6 @@ export default class Container extends React.Component {
   }
 
   setFriendToBeEdited = id => {
-    // find the friend using the passed `id`
-    // using setState:
-    // 1- set state.currentFriendId to be `id`
-    // 2- populate this.state.form with the name and age of the friend
     this.setState(state => {
       const friendToEdit = state.friends.find(friend => friend.id === id);
 
@@ -93,7 +82,6 @@ export default class Container extends React.Component {
   }
 
   inputChange = (value, field) => {
-    // implement with setState
     this.setState(state => ({
       form: {
         ...state.form,
@@ -103,8 +91,6 @@ export default class Container extends React.Component {
   }
 
   markAsEnemy = id => {
-    // using setState:
-    // add a "friendly" of false to the friend object with the given id
     this.setState(currentState => ({
       friends: currentState.friends.map(friend => {
         if (friend.id === id) {
@@ -116,8 +102,6 @@ export default class Container extends React.Component {
   }
 
   wipeOutEnemies = () => {
-    // using setState:
-    // wipe the enemies from the friends array
     this.setState(currentState => ({
       friends: currentState.friends.filter(friend => friend.friendly),
       currentFriendId: null,
@@ -130,7 +114,9 @@ export default class Container extends React.Component {
       <div className='container'>
         <div className='sub-container'>
           <h3>Friends List:</h3>
-          {/* Make it so we get the `No friends! Sad!` h5 if there are no friends */}
+          {
+            !this.state.friends.length && <div>No friends. Sad!</div>
+          }
           {
             this.state.friends.map(friend => (
               <Friend
