@@ -28,6 +28,16 @@ export default class Container extends React.Component {
     this.state = initialState;
   }
 
+  componentDidMount() {
+    // any code I put in here is executed after...
+    // - constructor function is run
+    // - render function is run
+    // - performs the actual DOM surgery of attaching the node
+    // THE FOLLOWING CODE IS RUN!!!!!!!!!! (this happens once for an instantiation)
+    fetchFriendsFrom('http://myapi.com/friends')
+      .then(friends => this.setState({ friends }));
+  }
+
   addFriend = () => {
     this.setState(state => {
       if (state.form.nameValue.trim() && state.form.ageValue.trim()) {
@@ -115,19 +125,18 @@ export default class Container extends React.Component {
         <div className='sub-container'>
           <h3>Friends List:</h3>
           {
-            !this.state.friends.length && <div>No friends. Sad!</div>
-          }
-          {
-            this.state.friends.map(friend => (
-              <Friend
-                bold
-                key={friend.id}
-                friend={friend}
-                deleteFriend={this.deleteFriend}
-                markAsEnemy={this.markAsEnemy}
-                setFriendToBeEdited={this.setFriendToBeEdited}
-              />
-            ))
+            !this.state.friends.length
+              ? <div>No friends. Sad!</div>
+              : this.state.friends.map(friend => (
+                <Friend
+                  bold
+                  key={friend.id}
+                  friend={friend}
+                  deleteFriend={this.deleteFriend}
+                  markAsEnemy={this.markAsEnemy}
+                  setFriendToBeEdited={this.setFriendToBeEdited}
+                />
+              ))
           }
         </div>
 
