@@ -4,6 +4,11 @@ import pt from 'prop-types';
 const callback = () => console.log('lc1: clicking the doc');
 
 export default class Friend extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(`lc1: Friend ${props.friend.name} is being instantiated!`);
+  }
+
   componentDidMount() {
     console.log(`lc1: DOM surgery is done for Friend ${this.props.friend.name}`);
 
@@ -37,6 +42,8 @@ export default class Friend extends React.Component {
   };
 
   render() {
+    console.log(`lc1: Friend ${this.props.friend.name} renders!!!!`);
+
     const friendStyle = {
       color: this.props.friend.friendly ? 'green' : 'red',
       fontWeight: this.props.bold ? 'bold' : 'initial',
