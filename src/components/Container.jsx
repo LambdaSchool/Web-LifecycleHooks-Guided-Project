@@ -8,7 +8,7 @@ const initialFormState = {
   ageValue: '',
 };
 
-const fetchFriendsFrom = (url) => (
+const fetchFriendsFrom = () => (
   Promise.resolve([
     { id: uuid(), name: 'Delba', age: '22', friendly: true },
     { id: uuid(), name: 'Maxime', age: '20', friendly: true },
@@ -26,15 +26,6 @@ export default class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
-  }
-
-  componentDidMount() {
-    this.fetchFriends();
-  }
-
-  fetchFriends = async () => {
-    const friends = await fetchFriendsFrom('http://www.friends.com/all');
-    this.setState({ friends });
   }
 
   addFriend = () => {

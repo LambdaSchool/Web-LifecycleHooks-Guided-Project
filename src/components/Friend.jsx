@@ -3,27 +3,6 @@ import pt from 'prop-types';
 
 
 export default class Friend extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('lifecycle: friend constructor!');
-  }
-
-  componentDidMount() {
-    console.log('lifecycle: DOM surgery done!');
-  }
-
-  componentWillUnmount() {
-    console.log('lifecycle: friend will unmount!');
-  }
-
-  componentDidUpdate(prevProps) {
-    console.log('lifecycle:', prevProps, this.props);
-    // console.log(`
-    //   lifecycle: friend used to be called ${prevProps.friend.name}
-    //   but now, he is called ${this.props.friend.name}
-    // `);
-  }
-
   onEdit = () => {
     this.props.setFriendToBeEdited(this.props.friend.id);
   };
@@ -37,8 +16,6 @@ export default class Friend extends React.Component {
   };
 
   render() {
-    console.log('lifecycle: render function firing!');
-
     const friendStyle = {
       color: this.props.friend.friendly ? 'green' : 'red',
       fontWeight: this.props.bold ? 'bold' : 'initial',
