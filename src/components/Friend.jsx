@@ -3,6 +3,14 @@ import pt from 'prop-types';
 
 
 export default class Friend extends React.Component {
+  componentDidMount() {
+    console.log('lc1: Friend has mounted');
+  }
+
+  componentWillUnmount() {
+    console.log('lc1: Friend is about to unmount');
+  }
+
   onEdit = () => {
     this.props.setFriendToBeEdited(this.props.friend.id);
   };
