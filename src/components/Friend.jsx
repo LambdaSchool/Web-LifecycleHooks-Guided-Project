@@ -10,6 +10,8 @@ export default class Friend extends React.Component {
     // add a click listener to the body of the page
     document.querySelector('body')
       .addEventListener('click', callback);
+
+    // launch camera!! on the device
   }
 
   componentWillUnmount() {
@@ -18,6 +20,8 @@ export default class Friend extends React.Component {
     // REMOVE that event listener from the body of the page
     document.querySelector('body')
       .removeEventListener('click', callback);
+
+    // stop the camera!! on the device
   }
 
   onEdit = () => {
