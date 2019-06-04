@@ -4,11 +4,11 @@ import pt from 'prop-types';
 
 export default class Friend extends React.Component {
   componentDidMount() {
-    console.log('lc1: DOM surgery is done');
+    console.log('lc1: DOM surgery is done for Friend');
   }
 
   componentWillUnmount() {
-    console.log('lc1: oops, this component no longer renders in the parent Container render function, so react is about to do DOM surgery to remove it');
+    console.log('lc1: oops, this Friend component no longer renders in the parent Containers render function, so react is about to do DOM surgery to remove it');
   }
 
   onEdit = () => {
