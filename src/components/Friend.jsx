@@ -4,11 +4,15 @@ import pt from 'prop-types';
 
 export default class Friend extends React.Component {
   componentDidMount() {
-    console.log('lc1: DOM surgery is done for Friend');
+    console.log('lc1: DOM surgery is done for Friend ' + this.props.friend.name);
+
+    // add a click listener to the body of the page
   }
 
   componentWillUnmount() {
-    console.log('lc1: oops, this Friend component no longer returns from the parent Containers render function, so react is about to do DOM surgery to remove it');
+    console.log(`lc1: oops, this Friend ${this.props.friend.name} component no longer returns from the parent Containers render function, so react is about to do DOM surgery to remove it`);
+
+    // REMOVE that event listener from the body of the page
   }
 
   onEdit = () => {
