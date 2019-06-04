@@ -4,7 +4,7 @@ import pt from 'prop-types';
 
 export default class Friend extends React.Component {
   componentDidMount() {
-    console.log('lc1: DOM surgery is done for Friend ' + this.props.friend.name);
+    console.log(`lc1: DOM surgery is done for Friend ${this.props.friend.name}`);
 
     // add a click listener to the body of the page
   }
