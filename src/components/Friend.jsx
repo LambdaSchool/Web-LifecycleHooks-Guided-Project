@@ -8,7 +8,7 @@ export default class Friend extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log('lc1: oops, this component no longer renders in the parent Container, so react is about to do DOM surgery to remove it');
+    console.log('lc1: oops, this component no longer renders in the parent Container render function, so react is about to do DOM surgery to remove it');
   }
 
   onEdit = () => {
