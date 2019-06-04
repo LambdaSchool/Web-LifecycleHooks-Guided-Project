@@ -9,6 +9,17 @@ export default class Friend extends React.Component {
     console.log(`lc1: Friend ${props.friend.name} is being instantiated!`);
   }
 
+  componentDidUpdate(prevProps) {
+    console.log(`lc1: Friend ${this.props.friend.name} got fresh props, the render lifecycle ran, react studied output, DOM surgery was performed if necessary`);
+
+    // compare the old props that were powering the instance (prevProps)
+    // against the new props that currently power the instance (this.props)
+
+    if (/* */) {
+      // invoke some callback or something
+    }
+  }
+
   componentDidMount() {
     console.log(`lc1: DOM surgery is done for Friend ${this.props.friend.name}`);
 
